@@ -1,0 +1,117 @@
+﻿@model GlarinWood.Models.Product
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این آیتم اطمینان دارید؟</h3>
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="Id" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt>
+        @Html.DisplayNameFor(model => model.Price)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Price)
+    </dd>
+@*
+    <dt>
+        @Html.DisplayNameFor(model => model.Lenght)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Lenght)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Width)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Width)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Height)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Height)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Thicnekss)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Thicnekss)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Depth)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Depth)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.MinSize)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.MinSize)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.MaxSize)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.MaxSize)
+    </dd>*@
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Keywords)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,137 @@
+﻿@model GlarinWood.Models.Product
+
+@{
+    ViewData["Title"] = "ایجاد محصول جدید";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Create"  enctype="multipart/form-data">
+    <div class="form-horizontal">
+        @*<h4>محصول</h4>*@
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Color" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+        </div>
+     
+            <!--  
+        <div class="form-group">
+            <label asp-for="Lenght" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Lenght" class="form-control" />
+                <span asp-validation-for="Lenght" class="text-danger"></span>
+            </div>
+        </div>
+         <div class="form-group">
+            <label asp-for="Width" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Height" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Thicnekss" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Thicnekss" class="form-control" />
+                <span asp-validation-for="Thicnekss" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Depth" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Depth" class="form-control" />
+                <span asp-validation-for="Depth" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MinSize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MinSize" class="form-control" />
+                <span asp-validation-for="MinSize" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaxSize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MaxSize" class="form-control" />
+                <span asp-validation-for="MaxSize" class="text-danger"></span>
+            </div>
+        </div>
+            -->
+      
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Image" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                @*asp-for="Image"*@
+                <input  type="file" name="file"  class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tags" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Keywords" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Keywords" class="form-control" />
+                <span asp-validation-for="Keywords" class="text-danger"></span>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input  type="submit" value="ایجاد" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>
+

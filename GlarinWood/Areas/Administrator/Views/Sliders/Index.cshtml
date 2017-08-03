@@ -1,0 +1,67 @@
+﻿@model IEnumerable<GlarinWood.Areas.Administrator.Models.Slider>
+
+@{
+    ViewData["Title"] = "اسلایدر";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>اسلایدر</h2>
+
+<p>
+    <a asp-action="Create"  class="btn btn-lg btn-info" >ایجاد اسلایدر</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title_1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description_1)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Image_1)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Title_2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description_2)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Image_2)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_1)
+            </td>
+            
+            <td class="col-md-1">
+                @Html.DisplayFor(modelItem => item.Description_1)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Image_1)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_2)
+            </td>
+            <td class="col-md-1">
+                @Html.DisplayFor(modelItem => item.Description_2)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Image_2)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"  class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

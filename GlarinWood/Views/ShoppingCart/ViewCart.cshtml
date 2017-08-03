@@ -1,0 +1,44 @@
+﻿ 
+@{
+    ViewData["Title"] = "ViewCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--بازگشت آیجکسی فرآیندهای حذف و اضافه -->
+<div class="cart-page-area" id="ViewCartPartial">
+
+   
+        <!-- Cart Page Area Start Here -->
+
+        @*@Html.Partial("_ViewCartPartial")*@
+
+
+         
+</div>
+
+<!-- Cart Page Area End Here -->@section Scripts{
+
+<script>
+
+$(function () {
+        $.ajax({
+            //مشخص کردن  اکشنی که باید فراخوانی شود
+            url: '/ShoppingCart/_ViewCartPartial',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            //نوع نتیجه بازگشتی
+            dataType: 'html'
+
+        })
+.success(function (result) {
+    //زمانی که کدهای سمت سرور بدون خطا اجرا شده اند
+    //این قسمت فراخوانی می‌شود و نتیجه اکشن درون متغیر
+    //result
+    //قرار می‌گیرد
+    $('#ViewCartPartial').html(result);
+})
+.error(function (xhr, status) {
+    alert(xhr.responseText);
+});
+    }); </script>
+     }

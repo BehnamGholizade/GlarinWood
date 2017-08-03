@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GlarinWood.Models.PicCollectionGallery>
+
+@{
+    ViewData["Title"] = "لیست عکس ها";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>لیست عکس ها</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-lg btn-info">ایجاد عکس</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PicGallery)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                <img src="~/metro/img/PicGallery/@item.Image" style="width:200px;height:200px;" alt="PicGallery" />
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PicGallery.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">جزئیات</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

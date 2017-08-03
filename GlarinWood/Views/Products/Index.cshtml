@@ -1,0 +1,170 @@
+﻿@model GlarinWood.Models.ProductFilterViewModel
+
+@{
+    ViewData["Title"] = "لیست";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2 style="text-align:center">لیست محصولات</h2>
+
+
+
+@*@Html.DropDownList("Name", "-- انتخاب کنید --")*@
+@*@foreach (var item in (SelectList)Model.products)
+    {
+
+        <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
+        @Html.Label(item.Value)
+    }*@
+
+
+
+
+
+<div>
+    <a asp-action="Create" class="btn btn-lg btn-info">ایجاد محصول جدید</a>
+</div>
+<br />
+<hr />
+
+<form asp-controller="Products" asp-action="Index" method="get">
+ 
+      
+    
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.products[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.products[0].Color)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CodeColor)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Lenght)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Width)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Height)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Thicnekss)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Depth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MinSize)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaxSize)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Keywords)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>*@
+                <th>
+                        @Html.DisplayNameFor(model => model.products[0].Price)
+                    </th>
+
+                <th>
+                    @*@Html.DisplayNameFor(model => model.products[0].Category)*@
+                   
+                  
+                        @*<label class="col-md-2 control-label">lk,hjkljliujil</label>*@
+                    <div class="row">
+                        <input type="submit" value="فیلتر" class="btn btn-primary" />
+                        <input type="text" class="search" style="background-color:white;line-height:normal;display:inline" placeholder="جستجو" name="SearchString">
+                        <select asp-for="ProductGener" class="dropdown" asp-items="@Model.geners">
+                            <option value="">همه گروه محصولات</option>
+                        </select>&nbsp;
+                    
+                    </div>
+            
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.products)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Lenght)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Width)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Height)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Thicnekss)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Depth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MinSize)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaxSize)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Keywords)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Image)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Tags)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">ویرایش</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">جزئیات</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+<!--صفحه بندی-->
+<div class="row text-center">
+    <nav>
+        <ul class="pagination">
+            @*<li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>*@
+            @for (int i = 1; i <= (ViewBag.PageCount + 1); i++)
+            {
+                <li class="@(((int)ViewBag.PageID==i)?"active":"")"><a asp-route-ProductGener="@ViewBag.ProductGener" asp-route-searchString="@ViewBag.searchString" asp-route-pageid="@i" asp-action="Index">@i<span class="sr-only">(current)</span></a></li>
+                }
+
+            @*<li class=""><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>*@
+        </ul>
+    </nav>
+</div>
+<!--انتهای صفحه بندی-->

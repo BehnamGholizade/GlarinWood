@@ -1,0 +1,139 @@
+﻿@model GlarinWood.Models.PicGallery
+
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ویرایش</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>گالری تصاویر</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">تصویر اصلی گالری</label>
+            <div class="col-md-10">
+                @*<input asp-for="Image" class="form-control" />*@
+                <input type="file" name="file" />
+                @*<input type="file" name="files" multiple />*@
+
+                <span asp-validation-for="Image" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Keywords" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Keywords" class="form-control" />
+                <span asp-validation-for="Keywords" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tags" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ذخیره" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@*<br />
+<div>
+    <a asp-action="EditPGC" class="btn btn-warning">ویرایش گالری تصاویر</a>
+</div>
+<br />*@
+<hr />
+<h3 style="text-align:center">لیست گالری عکس ها</h3>
+@if (ViewBag.PGCCount == 0)
+{
+    <hr />
+    <p>برای این عکس، گالری یافت نگردید.</p>
+}
+<!-- Shop Page Area Start Here -->
+<div class="shop-page-area">
+    @*<h2 style="text-align:center">@Model</h2>*@
+    @*<h1 style="font-family:Verdana;color:teal;text-align:center"> </h1>*@
+    <div class="container">
+        <div class="row products-container">
+
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+ 
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.PGC)
+                    {
+                        <tr>
+                            <td>
+                             </td>
+                            <td>
+                                <img src="~/metro/img/PicGallery/@item.Image" style="width:200px;height:200px;" alt="PicGallery" />
+
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-controller="PicCollectionGalleries"  asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-controller="PicCollectionGalleries" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-controller="PicCollectionGalleries" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+            @*@foreach (var item in ViewBag.PGC)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                    <div class="product-box1">
+                       
+                        <div class="product-img-holder">
+                            <img src="~/metro/img/PicGallery/@item.Image" style="width:272px;height:380px;" alt="PicGallery" />
+                        </div>
+                        <a asp-action="EditPGC" asp-route-id="@item.Id" class="btn btn-success">ویرایش</a>
+
+                    </div>
+                </div>
+            }*@
+
+        </div>
+    </div>
+</div>
+<hr />
+<br />
+<div>
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

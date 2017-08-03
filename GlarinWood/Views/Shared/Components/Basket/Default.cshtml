@@ -1,0 +1,125 @@
+﻿
+@model IEnumerable<GlarinWood.Models.CartItem>
+  
+@{
+    decimal QTYPrice = 0;
+    decimal SumCountPrice = 0;
+    int SumCount = 0;
+    //var Cart = new ShoppingCart(_contextAccessor, _context);
+
+    ////var applicationDbContext = Cart.GetCartItems().ToList();
+    //var applicationDbContext = _context.CartItems.Include(c => c.Product).Include(p => p.Product.Category).Where(current => current.CartId == Cart.GetCart(_contextAccessor)).ToList();zz
+    var pc = Model.Count();
+
+}
+<!--سبد خرید-->
+@*@pc*@
+
+<div class="cart-area">
+    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>@pc</span></a>
+    <!--جهت اسکرول زدن به سبد خرید-->
+    <ul style="overflow:scroll;overflow-x: hidden;height:auto;width:435px;max-height:500px">
+
+        @{foreach (var item in Model.ToList())
+            {
+                <li>
+                    <div class="cart-single-product">
+                        <div class="media">
+                            <div class="pull-left cart-product-img">
+                                <a href="~/metro/index2.html#">
+                                    <img class="img-responsive" alt="product" src="~/metro/img/product/AllProductImage/@item.Product.Image" />
+                                </a>
+                            </div>
+                            <div class="media-body cart-content" style="direction:rtl">
+                                <ul style="float:right;text-align:right">
+                                    <li>
+                                        <h2>@item.Product.Category.Name</h2>
+
+                                        <h1>@item.Product.Name</h1>
+
+                                        <h2>قیمت:  @string.Format("{0:#,##0 ريال}", item.Product.Price)</h2>
+
+                                    </li>
+                                    <li style="float:left">
+                                        <h2>تعداد: @item.Count</h2>
+                                        <!--مجموع کل-->
+                                        @{ SumCount += item.Count;}
+
+
+                                    </li>
+                                    @{ if (QTYPrice == 0)
+                                        {
+                                            QTYPrice = (item.Count * item.Product.Price);
+                                        }
+                                        else
+                                        {
+                                            QTYPrice = (item.Count * item.Product.Price) + QTYPrice;
+                                        }
+                                    }
+                                    <li>جمع کل:  @string.Format("{0:#,##0 ريال}", (item.Count * item.Product.Price))</li>
+
+
+
+                                    <li style="float:left">
+                                        <!--جهت برآورد جمع کل نهایی-->
+                                        @{ SumCountPrice = (item.Count * item.Product.Price) + SumCountPrice;}
+
+
+
+
+                                        @*<a asp-action="RemoveFromCart" id="rre"  asp-controller="ShoppingCartAPI" asp-route-id="@item.ProductId" class="trash" data-ajax="true"
+                                            data-ajax-loading="#Progress"
+                                            data-ajax-method="POST"
+                                            data-ajax-mode="replace"
+                                            data-ajax-update="#EmployeeInfo"><i class="fa fa-trash-o"></i></a>*@
+                                        <h1>  <a onclick="RemoveFromBasket(@item.ProductId)" id="rre" style="float:left" class="trash"><i class="fa fa-trash-o"></i></a></h1>
+
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                                            }
+        }
+
+        <li>
+            <span><span>@string.Format("{0:#,##0 ريال}", SumCountPrice)</span></span><span>جمع نهایی</span>
+            <span><span>0</span></span><span>تخفیف</span>
+            <span><span>@SumCount</span></span><span>تعداد کل</span>
+            @*<span><span>Sub Total</span></span><span>$112.8</span>*@
+        </li>
+        <li>
+            <ul class="checkout">
+                <li><a asp-action="ViewCart" asp-controller="ShoppingCart" class="btn-checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i>سبد خرید</a></li>
+                @*@ if (User.Identity.IsAuthenticated)*@
+
+                <li><a asp-action="Checkout" asp-controller="ShoppingCart" class="btn-checkout"><i class="fa fa-share" aria-hidden="true"></i>ثبت سفارش</a></li>
+
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script>
+
+    function RemoveFromBasket(id) {
+        $(document).ready(function () {
+            $.ajax({
+                url: "/ShoppingCart/RemoveFromBasket",
+                type: "Get",
+                data: { productId: id }
+
+            }).done(function (result) {
+                $('#CountShopCart').html(result);
+
+            });
+
+
+
+        });
+    }
+
+</script>

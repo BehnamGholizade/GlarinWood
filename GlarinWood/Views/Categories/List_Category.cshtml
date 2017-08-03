@@ -1,0 +1,97 @@
+﻿@model IEnumerable<GlarinWood.Models.Category>
+
+@{
+    ViewData["Title"] = "لیست محصولات";
+    ////Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- portfolio2 Page Area Start Here -->
+<div class="portfolio2-page-area">
+    <div class="container-fluid">
+        <div class="row">
+            <h3 style="text-align:center;color:indigo;border-color:coral;border:12px;">لیست محصولات</h3>
+            <br />
+            <hr />
+           @foreach (var item in Model.ToList())
+           {
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                <div class="portfolio2-box">
+                    <div class="portfolio2-img-holder">
+                        <div class="portfolio2-content-holder">
+
+                            <h2 style="text-align:center;"><a style="color:springgreen;text-align:center;" asp-action="List" asp-controller="Products" asp-route-id="@item.Id">@item.Name</a></h2>
+                        </div>
+                        <a asp-action="List" asp-controller="Products" asp-route-id="@item.Id"><img class="img-responsive" src="~/metro/img/Category/@item.Image" alt="Category_Wood"></a>
+                    </div>
+                </div>
+            </div>
+
+           }
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                <div class="portfolio2-box">
+                    <div class="portfolio2-img-holder">
+                        <div class="portfolio2-content-holder">
+                            <h2 style="text-align:center;"><a style="color:springgreen;text-align:center;"  asp-action="List" asp-controller="HeaderColumns">سرستون</a></h2>
+                        </div>
+                        <a  asp-action="List" asp-controller="HeaderColumns"><img class="img-responsive" src="~/metro/img/Category/sarsoton1988.jpg" alt="Category_Wood"></a>
+                        @*style="width:372px;height:246px;"*@
+                    </div>
+                </div>
+            </div>
+          
+            @*@{ foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="portfolio2-box">
+                            <div class="portfolio2-img-holder">
+                                <div class="portfolio2-content-holder">
+                                    <h3><a href="portfolio2.html#">@item.Name</a></h3>
+                                    <ul>
+                                        <li>Travel</li>
+                                        <li>Style</li>
+                                    </ul>
+                                </div>
+                                <a href="portfolio2.html#"><img class="img-responsive" src="@item.Image" alt="portfolio"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                }}*@
+        </div>
+    </div>
+</div>
+<!-- portfolio2 Page Area End Here -->
+@*<h2>List_Category</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

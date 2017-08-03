@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GlarinWood.Models.HeaderColumn>
+
+@{
+    ViewData["Title"] = "لیست ابعاد";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>لیست سرستون ها</h2>
+
+<div>
+    <a asp-action="Create"  class="btn btn-lg btn-info">ایجاد سرستون</a>
+</div>
+<br />
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.dEs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dEs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">جزئیات</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

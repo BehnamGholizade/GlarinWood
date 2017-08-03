@@ -1,0 +1,44 @@
+﻿@model GlarinWood.Models.Download_Files
+
+@{
+    ViewData["Title"] = "ایجاد";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>آپلود فایل</h2>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        @*<h4>Download_Files</h4>*@
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="File" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input type="file" name="file" class="form-control" />
+                @*<input asp-for="File" class="form-control" />*@
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ایجاد" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

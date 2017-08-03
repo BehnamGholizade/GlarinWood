@@ -1,0 +1,58 @@
+﻿@model GlarinWood.Models.HeaderColumnsDes
+
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ویرایش</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>ابعاد سرستون</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Width" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Height" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Thicnekss" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Thicnekss" class="form-control" />
+                <span asp-validation-for="Thicnekss" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            @*<label asp-for="HeaderColumnId" class="control-label col-md-2"></label>*@
+            <div class="col-md-10">
+                <input type="hidden" asp-for="HeaderColumnId" class="form-control" asp-items="ViewBag.HeaderColumnId"/>
+                @*<span asp-validation-for="HeaderColumnId" class="text-danger"></span>*@
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ذخیره" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index"  class="btn btn-primary">بازگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

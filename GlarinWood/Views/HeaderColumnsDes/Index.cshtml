@@ -1,0 +1,59 @@
+﻿@model IEnumerable<GlarinWood.Models.HeaderColumnsDes>
+
+@{
+    ViewData["Title"] = "لسیت سرستون";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>لیست سرستون ها</h2>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Width)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Height)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Thicnekss)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeaderColumn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thicnekss)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeaderColumn.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">جزئیات</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+  
+
+</table>
+<div>
+    <a asp-action="Create" asp-controller="HeaderColumns"  class="btn btn-primary">ایجاد سرستون جدید</a>
+</div>

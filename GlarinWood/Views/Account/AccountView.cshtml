@@ -1,0 +1,37 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@*@using GlarinWood.Models;*@
+@model Login_RegisterViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+     
+    @{
+        ViewData["Title"] = "حساب کاربری";
+
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<br />
+<br />
+    <div  style="direction:rtl">
+             <div  style=" font-size:large;text-align:center" asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <br />
+        <hr />
+                 <div class="container">
+                    <div class="row">
+
+                        @Html.Partial("_LoginViewPartial",Model)
+                        @Html.Partial("_RegisterViewPartial",Model)
+                    </div>
+                </div>
+            </div>
+ 
+
+
+
+ 
+    <!-- Login Registration Page Area Start Here -->
+    <!-- Login Registration Page Area End Here -->

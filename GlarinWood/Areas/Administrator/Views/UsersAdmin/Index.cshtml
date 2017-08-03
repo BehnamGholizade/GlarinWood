@@ -1,0 +1,49 @@
+﻿@model IEnumerable<GlarinWood.Models.ApplicationUser>
+
+
+@{
+    ViewBag.Title = "مدیریت کاربران و سطوح دسترسی";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+
+}
+
+<img src="~/Admin/img/admin_s.png" alt="admin" />
+
+
+<h2>مدیریت نقش های کاربر</h2>
+
+
+<div>
+    <a asp-action="Create" class="btn btn-lg btn-info">ایجاد کاربر جدید</a>
+</div>
+<br />
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("شناسه کاربری")
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        //if (item.UserName != "SampleAdminHidden@gmail.com")
+        //{ 
+          <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("جزئیات", "Details", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+       @*}*@
+        
+    }
+
+</table>

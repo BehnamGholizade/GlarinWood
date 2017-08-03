@@ -1,0 +1,60 @@
+﻿@model GlarinWood.Models.EditUserViewModel
+
+@{
+    ViewBag.Title = "ویرایش";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+
+}
+<img src="~/Admin/img/admin_s.png" alt="admin" />
+
+
+<h2>ویرایش</h2>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ویرایش اطلاعات کاربر</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @*@Html.Label("سطح دسترسی")*@
+            <label class="control-label col-md-2" >سطح دسترسی</label>
+            @*, new { @class = "control-label col-md-2" }*@
+            <span class=" col-md-8">
+                @foreach (var item in Model.RolesList)
+                {
+                    if (item.Value != "Programer")
+                    {
+                        <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+                        @Html.Label(item.Value)
+                        //, new { @class = "control-label" }
+                    }
+                }
+            </span>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ذخیره" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    <a asp-action="Index"  class="btn btn-primary">بازگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

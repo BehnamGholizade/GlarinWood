@@ -1,0 +1,55 @@
+﻿@model GlarinWood.Areas.Administrator.Models.Slider
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>@Model.Title_1 | @Model.Title_2</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title_1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title_1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description_1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description_1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image_1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title_2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title_2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description_2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description_2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image_2)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">ویرایش</a> |
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>

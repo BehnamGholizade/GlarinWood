@@ -1,0 +1,3 @@
+﻿1>------ Build started: Project: GlarinWood, Configuration: Debug Any CPU ------
+1>GlarinWood -> H:\RTM\GlarinWoodRTM_Basket_AJAX\RTM\GlarinWoodRTM\GlarinWood\bin\Debug\netcoreapp1.1\GlarinWood.dll
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========

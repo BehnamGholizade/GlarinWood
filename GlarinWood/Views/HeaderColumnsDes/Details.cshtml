@@ -1,0 +1,43 @@
+﻿@model GlarinWood.Models.HeaderColumnsDes
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>ابعاد سرستون</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Width)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Thicnekss)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Thicnekss)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HeaderColumn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HeaderColumn.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">ویرایش</a> |
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>

@@ -1,0 +1,58 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.Rendering;
+
+@using Microsoft.AspNetCore.Http.Authentication
+@model Login_RegisterViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="col-md-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="cart-area-title" style="font-family:IranNastaliq;text-align:center;font-size:xx-large">ایجاد حساب کاربری جدید</h2>
+        </div>
+        <div class="panel-body">
+            <form method="post" class="form-horizontal" asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">
+                <hr />
+                <div asp-validation-summary="None" class="text-danger"></div>
+                <div class="form-group" style="text-align:center">
+                    <label asp-for="RegisterVM.Email" class="control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="RegisterVM.Email" class="form-control" />
+                        <span asp-validation-for="RegisterVM.Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:center">
+                    <label asp-for="RegisterVM.Password" class="control-label"></label>
+                    <div class="col-md-10">
+
+                        <input asp-for="RegisterVM.Password" class="form-control" />
+                        <span asp-validation-for="RegisterVM.Password" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group" style="text-align:center">
+                    <label asp-for="RegisterVM.ConfirmPassword" class="control-label"></label>
+                    <div class="col-md-10">
+
+                        <input asp-for="RegisterVM.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="RegisterVM.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group" style="text-align:right">
+                    <div class="col-md-offset-1 col-md-10">
+                        @*<button type="submit" class="btn-send-message disabled">ثبت نام</button>*@
+                        <div class="col-md-10">
+                            <input name="submitValue" value="ثبت نام کاربر" type="submit" class="btn btn-primary">
+                            @*btn-send-message disabled*@
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

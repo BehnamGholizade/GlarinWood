@@ -1,0 +1,127 @@
+﻿@model GlarinWood.Models.Product
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <button type="button" class="close myclose" data-dismiss="modal">&times;</button>
+            <br />
+            <h4 style="text-align:center;">@Html.DisplayFor(model => model.Category.Name)</h4>
+            <hr />
+            <div class="product-details1-area">
+                <div class="product-details-info-area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="inner-product-details-left">
+                                <div class="tab-content">
+                       
+                                    <div id="related1" class="tab-pane fade active in">
+                                        <a class="zoom ex1" href="#"><img class="img-responsive" src="~/metro/img/product/AllProductImage/@Model.Image" alt="single"></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" dir="rtl">
+                        
+                            <div class="inner-product-details-right">
+                                <ul>
+
+                                    <li><i aria-hidden="true" class="fa fa-star"></i></li>
+                                    <li><i aria-hidden="true" class="fa fa-star"></i></li>
+                                    <li><i aria-hidden="true" class="fa fa-star"></i></li>
+                                    <li><i aria-hidden="true" class="fa fa-star"></i></li>
+                                    <li><i aria-hidden="true" class="fa fa-star"></i></li>
+                                </ul>
+                                
+                                <p><h4> <span style="color:darkslategray;">@Html.DisplayNameFor(model => model.Name):</span><span style="color:black;">&nbsp;@Html.DisplayFor(model => model.Name)</span></h4></p>
+                                @{if (@Model.Color != null)
+                                    {
+                                        <p><h4> <span style="color:darkslategray;">@Html.DisplayNameFor(model => model.Color):</span><span style="color:black;">&nbsp;@Html.DisplayFor(model => model.Color)</span></h4></p>
+                                    } }
+                                <p><h4> <span style="color:darkslategray;">@Html.DisplayNameFor(model => model.Price):</span><span style="color:black;">&nbsp;@Html.DisplayFor(model => model.Price)</span></h4></p>
+
+                                <div class="product-details-content">
+                                    <p><h4> <span style="color:darkslategray;">@Html.DisplayNameFor(model => model.Description):</span><span style="color:black;text-align:center"><br />&nbsp;@Html.DisplayFor(model => model.Description)</span></h4></p>
+
+                                    @*<p><span>Availability:</span> In stock</p>
+                                        <p><span>Category:</span> Demo Products</p>*@
+                                </div>
+                                     <ul class="inner-product-details-cart">
+                                        <li>
+                                         <button class="btn-apply-coupon disabled"   data-dismiss="modal" onclick="AddToBasket(@Model.Id)">افزودن به سبد</button>
+                                        </li>
+                                         <!--تعیین تعداد محصولات-->
+                                        <li>
+                                            <div class="input-group quantity-holder" id="quantity-holder">
+                                                <input type="text" placeholder="1" value="1" class="form-control quantity-input"  name="quantity">
+                                                 
+                                                 <div class="input-group-btn-vertical">
+                                                    <button type="button" class="btn btn-default quantity-plus"><i aria-hidden="true" class="fa fa-plus"></i></button>
+                                                     <button class="btn btn-default quantity-minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+
+                                                 </div>
+                                            </div>
+                                        </li>
+                                        @*<li><a href="shop4.html#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>*@
+                                    </ul>
+                                    <!--اسکریپت جهت افزودن شمارنده تعداد محصول-->
+
+                                <script>
+                                    function AddToBasket(id) {
+                                        $(document).ready(function () {
+                                            $.ajax({
+                                                url: "/ShoppingCart/AddToCart",
+                                                type: "POST",
+                                                data: { id: id, quantity: $("input[name='quantity']", this).val(), }
+
+                                            }).done(function (result) {
+                                                $('#CountShopCart').html(result);
+
+                                            });
+                                        });
+                                    }
+
+                                </script>
+                                <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('#quantity-holder,#quantity-holder2')
+                                                .on('click', '.quantity-plus', function () {
+
+                                                    var $holder = $(this).parents('.quantity-holder');
+                                                    var $target = $holder.find('input.quantity-input');
+                                                    var $quantity = parseInt($target.val(), 10);
+                                                    if ($.isNumeric($quantity) && $quantity > 0) {
+                                                        $quantity = $quantity + 1;
+                                                        $target.val($quantity);
+                                                    } else {
+                                                        $target.val($quantity);
+                                                    }
+
+                                                }).on('click', '.quantity-minus', function () {
+
+                                                    var $holder = $(this).parents('.quantity-holder');
+                                                    var $target = $holder.find('input.quantity-input');
+                                                    var $quantity = parseInt($target.val(), 10);
+                                                    if ($.isNumeric($quantity) && $quantity >= 2) {
+                                                        $quantity = $quantity - 1;
+                                                        var x = $target.val($quantity);
+
+                                                    } else {
+                                                        $target.val(1);
+                                                    }
+                                                })
+
+
+                                        });
+
+                                    </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="modal-footer">
+            <a href="#" class="btn btn-danger" data-dismiss="modal"><span style="font-family:Tahoma">بستن</span></a>
+        </div>*@
+    </div>
+</div>

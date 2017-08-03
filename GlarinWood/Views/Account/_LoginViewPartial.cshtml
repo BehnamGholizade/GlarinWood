@@ -1,0 +1,131 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@using Microsoft.AspNetCore.Mvc.Razor
+@model Login_RegisterViewModel
+
+@inject SignInManager<ApplicationUser> SignInManager
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">*@
+<div class="col-md-6">
+    <div class="panel panel-success">
+
+        <div class="panel-heading">
+            <h2 class="cart-area-title" style="font-family:IranNastaliq;font-size:xx-large;text-align:center">ورود</h2>
+        </div>
+        @*class="navbar-right"*@
+        @*<form asp-area="" asp-controller="Account" asp-action="Login" method="post" id="login">
+                <label asp-for="Email" class="col-md-2 control-label"></label>
+                 <input asp-for="Email" type="text" placeholder="Name or E-mail" />
+                <label>Password *</label>
+                <input asp-for="Password" type="password" placeholder="Password" />
+                <label class="check">Lost your password?</label>
+                <button  class="btn-send-message disabled" type="submit" value="Login">Login</button>
+                <span><input asp-for="RememberMe" type="checkbox" name="remember" />Remember Me</span>
+            </form> *@
+
+
+        <div class="panel-body">
+
+            <form method="post" class="form-horizontal" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" dir="rtl">
+                <br />
+                <div asp-validation-summary="None" class="text-danger"></div>
+                <div class="form-group" style="text-align:center">
+                    <label class="control-label" asp-for="LoginVM.Email"></label>
+                    <div class="col-md-10">
+                        <input asp-for="LoginVM.Email" class="form-control" />
+                        <span asp-validation-for="LoginVM.Email" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group" style="text-align:center">
+                    <label class="control-label" asp-for="LoginVM.Password"></label>
+                    <div class="col-md-10">
+
+                        <input asp-for="LoginVM.Password" class="form-control" />
+                        <span asp-validation-for="LoginVM.Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+
+
+                        <div class="checkbox">
+
+                            <input asp-for="LoginVM.RememberMe" class="form-control" />
+
+                            &nbsp;<label class="control-label" asp-for="LoginVM.RememberMe"></label>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-10">
+                        @*<button type="submit" class="btn-send-message disabled">ورود کاربر</button>*@
+                        <div class="col-md-10">
+
+                            <input value="ورود کاربر" name="submitValue" type="submit" class="btn btn-success">
+                            @*btn-send-message disabled*@
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                @*<p>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">ثبت نام کاربر جدید؟"</a>
+                    </p>*@
+                <p>
+                    <a asp-action="ForgotPassword">گذرواژه خود را فراموش کرده اید؟</a>
+                </p>
+            </form>
+        </div>
+
+        @*<div class="col-md-4">
+                <section>
+                    <h4>Use another service to log in.</h4>
+                    <hr />
+                    @{
+                        var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
+                        if (loginProviders.Count == 0)
+                        {
+                            <div>
+                                <p>
+                                    There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                    for details on setting up this ASP.NET application to support logging in via external services.
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                                <div>
+                                    <p>
+                                        @foreach (var provider in loginProviders)
+                                        {
+                                            <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
+                                        }
+                                    </p>
+                                </div>
+                            </form>
+                        }
+                 }
+                </section>
+            </div>*@
+
+
+
+
+
+    </div>
+</div>
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+
+}

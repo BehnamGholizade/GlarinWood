@@ -1,0 +1,48 @@
+﻿@model GlarinWood.Areas.Administrator.Models.Projects
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این آیتم اطمینان دارید؟ </h3>
+<div>
+    <h4>@Model.Title_Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="Id" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Title_Project)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title_Project)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image_Description)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+        </div>
+    </form>
+</div>

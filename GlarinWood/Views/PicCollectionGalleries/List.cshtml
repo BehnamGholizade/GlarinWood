@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GlarinWood.Models.PicCollectionGallery>
+
+@section Scripts{
+
+    <link href="~/picgallery/PicGalleryCollection.css" rel="stylesheet" />
+    <script src="~/picgallery/PicGalleryCollection.js"></script>
+}
+<br />
+<div class="container">
+    <div id="main_area">
+        <!-- Slider -->
+        <div class="row">
+            <div class="col-sm-6" id="slider-thumbs">
+                <!-- Bottom switcher of slider -->
+                @{int i = 0;}
+                <ul class="hide-bullets">
+                    @foreach (var item in Model)
+                    {
+                        <li class="col-sm-3">
+                            <a class="thumbnail" id="carousel-selector-@i">
+                                 <img title=""  style="width:150px;height:150px;" src="~/metro/img/PicGallery/@item.Image">
+
+                            </a>
+                        </li>
+                        <content hidden>
+                            @(i++)
+                        </content>
+
+                    }
+
+                </ul>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="col-xs-12" id="slider">
+                    <!-- Top part of the slider -->
+                    <div class="row">
+                        <div class="col-sm-12" id="carousel-bounding-box">
+                            <div class="carousel slide" id="myCarousel">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                                    @{int j = 0;}
+                                    @*@for (int j = 0; j <= (ViewBag.count ); i++)
+                                        {*@
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="@((j == 0) ? "active" : "") item" data-slide-number="@j">
+                                            @*style="width:524px;height:482px;"*@ 
+                                             <img title="" style="width:470px;height:480px;" src="~/metro/img/PicGallery/@item.Image">
+
+                                        </div>
+                                        <content hidden>
+                                            @(j++)
+                                        </content>
+                                    }
+                                </div>
+                                <!-- Carousel nav -->
+                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                    @*class="livicon pull-right " data-n="sun" data-s="25" data-c="#0051ff" data-hc="#cc00aa"*@
+                                    <span class="livicon" data-n="angle-wide-left"  style="margin-top:240px; position:absolute" data-s="35" data-c="#0051ff" data-hc="#cc00aa"></span>
+                                </a>
+                                <a class="right carousel-control"   href="#myCarousel" role="button" data-slide="next">
+                                   
+                                    @*<span class="glyphicon glyphicon-chevron-right"></span>*@
+                                    <span class="livicon" data-n="angle-wide-right" style="margin-top:240px; position:absolute" data-s="35" data-c="#0051ff" data-hc="#cc00aa"></span>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Slider-->
+        </div>
+    </div>
+</div>

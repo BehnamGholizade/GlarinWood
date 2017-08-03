@@ -1,0 +1,48 @@
+﻿@model GlarinWood.Models.HeaderColumnsDes
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این آیتم اطمینان دارید؟</h3>
+<div>
+    <h4>ابعاد سرستون</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="Id" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Width)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Thicnekss)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Thicnekss)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HeaderColumn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HeaderColumn.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+        </div>
+    </form>
+</div>

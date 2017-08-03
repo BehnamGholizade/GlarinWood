@@ -1,0 +1,78 @@
+﻿@model GlarinWood.Models.PicGallery
+
+@{
+    ViewData["Title"] = "ایجاد گالری تصاویر";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        @*<h4>@Model.Name</h4>*@
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">تصویر اصلی گالری</label>
+            <div class="col-md-10">
+                @*<input asp-for="Image" class="form-control" />*@
+                <input type="file" name="file" />
+                @*<input type="file" name="files" multiple />*@
+
+                <span asp-validation-for="Image" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Keywords" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Keywords" class="form-control" />
+                <span asp-validation-for="Keywords" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tags" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label class="col-md-2 control-label">مجموعه تصاویر گالری</label>
+            <div class="col-md-10">
+                <input type="file" name="files" multiple />
+                <span   class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ایجاد" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

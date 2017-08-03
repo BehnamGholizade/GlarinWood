@@ -1,0 +1,86 @@
+﻿@model GlarinWood.Models.PicGallery
+
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>گالری تصاویر</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dd>
+           
+            @*@Html.DisplayFor(model => model.Image)*@
+            <img src="~/metro/img/PicGallery/@Model.Image " style="width:200px;height:200px;" alt="PicGallery" />
+            <br />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>*@
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Keywords)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+    </dl>
+</div>
+<hr />
+<h3 style="text-align:center">لیست گالری عکس ها</h3>
+@if (ViewBag.PGCCount == 0)
+{
+    <hr />
+    <p>برای این عکس، گالری یافت نگردید.</p>
+}
+<!-- Shop Page Area Start Here -->
+<div class="shop-page-area">
+    @*<h2 style="text-align:center">@Model</h2>*@
+    @*<h1 style="font-family:Verdana;color:teal;text-align:center"> </h1>*@
+    <div class="container">
+        <div class="row products-container">
+
+
+            @foreach (var item in ViewBag.PGC)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                    <div class="product-box1">
+                    
+                        <div class="product-img-holder">
+                            <img src="~/metro/img/PicGallery/@item.Image"  style="width:272px;height:380px;"  alt="PicGallery" />
+                        </div>
+                   
+                    </div>
+                </div>
+            }
+
+            </div></div></div>
+<hr />
+<br />
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">ویرایش</a> |
+                <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+            </div>

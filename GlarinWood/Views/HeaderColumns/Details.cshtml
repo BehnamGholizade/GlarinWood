@@ -1,0 +1,86 @@
+﻿@model GlarinWood.Models.HeaderColumn
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dEs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dEs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+    </dl>
+</div>
+<h4>لیست ابعاد سرستون </h4>
+<hr />
+
+@if (ViewBag.ListDesCount == 0)
+{
+    <hr />
+    <p>برای این سرستون ابعادی در نظر گرفته نشده است.</p>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                عرض
+            </th>
+            <th>
+                طول
+            </th>
+            <th>
+                ضخامت
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in ViewBag.ListDes)
+            {
+                <tr>
+                    <td>
+                        @item.Width
+
+                    </td>
+                    <td>
+                        @item.Height
+
+                    </td>
+                    <td>
+                        @item.Thicnekss
+
+                    </td>
+
+                </tr>
+            }
+        }
+    <tbody>
+</table>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">ویرایش</a> |
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>

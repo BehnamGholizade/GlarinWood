@@ -1,0 +1,36 @@
+﻿@model GlarinWood.Models.Download_Files
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این آیتم اطمینان دارید؟</h3>
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="Id" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.File)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.File)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+        </div>
+    </form>
+</div>

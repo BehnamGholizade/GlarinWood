@@ -1,0 +1,46 @@
+﻿@model IEnumerable<GlarinWood.Models.Download_Files>
+
+@{
+    ViewData["Title"] = "لیست فایل ها";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>لیست فایل ها</h2>
+
+<div>
+    <a asp-action="Create" class="btn btn-lg btn-info">آپلود فایل جدید</a>
+</div>
+ 
+<br />
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.File)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.File)
+            </td>
+            <td>
+                <a asp-action="Download" asp-route-id="@item.Id" class="btn btn-primary">دانلود</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">جزئیات</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

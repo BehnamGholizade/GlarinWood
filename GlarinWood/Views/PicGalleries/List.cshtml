@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GlarinWood.Models.PicGallery>
+
+@{
+    ViewData["Title"] = "گالری";
+    //Layout = "~/Areas/Admini/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
+
+
+}
+<!-- Shop Page Area Start Here -->
+<div class="shop-page-area">
+    @*<h2 style="text-align:center">@Model</h2>*@
+    @*<h1 style="font-family:Verdana;color:teal;text-align:center"> </h1>*@
+    <div class="container">
+        <div class="row products-container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                    <div class="product-box1">
+                        <ul class="product-social">
+                            @*<li><a href="shop7.html#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                                <li><a href="shop7.html#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>*@
+                            <li> <a asp-action="List" asp-controller="PicCollectionGalleries" asp-route-id="@item.Id"><span class=" livicon" data-n="eye-open" data-s="40" data-c="#de5100" data-hc="#0051ff"></span></a></li>
+                           <h5 style="font-family:Tahoma;text-align:center;color:deeppink">@item.Description</h5> 
+                        </ul>
+                        <div class="product-img-holder">
+                            <a href="#"><img class="thumbnail" style="width:272px;height:380px;" src="~/metro/img/PicGallery/@item.Image" alt="PicGallery"></a>
+                        </div>
+                        <div class="product-content-holder">
+                            <h3 style="font-family:Tahoma;color:lightseagreen;text-align:center">@item.Name</h3>
+                           
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+
+        @section Scripts{
+
+        }
+    </div>
+</div>

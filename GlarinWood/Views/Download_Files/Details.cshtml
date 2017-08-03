@@ -1,0 +1,31 @@
+﻿@model GlarinWood.Models.Download_Files
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h2>جزئیات فایل</h2>
+
+<div>
+    @*<h4>فایل</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.File)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.File)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">ویرایش</a> |
+    <a asp-action="Index" class="btn btn-primary">بازگشت به لیست</a>
+</div>

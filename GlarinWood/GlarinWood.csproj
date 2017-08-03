@@ -1,0 +1,628 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <UserSecretsId>aspnet-GlarinWood-e2d627fd-752b-4efc-88ea-6adfd7ed9d77</UserSecretsId>
+  </PropertyGroup>
+    <!--ساخت پوشه ی لاگز جهت ذخیره خطا ها بعد از پابلیش از WebConfig -->
+
+<Target Name="CreateLogsFolder" AfterTargets="AfterPublish">
+    <MakeDir Directories="$(PublishDir)logs" Condition="!Exists('$(PublishDir)logs')" />
+    <MakeDir Directories="$(PublishUrl)Logs" Condition="!Exists('$(PublishUrl)Logs')" />
+  </Target>
+  <!--برای تعیین تارگت و رفع خطای 502.5-->
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NETCore.App" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Services\Utilites\LocalizedEmailTemplates\Contact.htm" />
+    <Content Include="Services\Utilites\LocalizedEmailTemplates\ForgotPasswordUserEmail.htm" />
+    <Content Include="Services\Utilites\LocalizedEmailTemplates\News.htm" />
+    <Content Include="Services\Utilites\LocalizedEmailTemplates\UserEdit.htm" />
+    <Content Include="Utilites\LocalizedEmailTemplates\UserEmailVerification.htm" />
+    <Content Include="wwwroot\Admin\font-awesome\css\font-awesome.css" />
+    <Content Include="wwwroot\Admin\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontd41d.eot" />
+    <Content Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontf77b.eot" />
+    <Content Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontf77b.ttf" />
+    <Content Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontf77b.woff" />
+    <Content Include="wwwroot\Admin\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="wwwroot\Admin\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="wwwroot\fonts\Descr.WD3">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.eot@" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regulard41d.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\rtl.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Yekan-modified.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Yekan-modified.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Yekan-modified.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Yekan-modified.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\images\js\site.js" />
+    <Content Include="wwwroot\images\js\site.min.js" />
+    <Content Include="wwwroot\LocalizedEmailTemplates\Contact.htm" />
+    <Content Include="wwwroot\LocalizedEmailTemplates\ForgotPasswordUserEmail.htm" />
+    <Content Include="wwwroot\LocalizedEmailTemplates\News.htm" />
+    <Content Include="wwwroot\LocalizedEmailTemplates\UserEdit.htm" />
+    <Content Include="wwwroot\LocalizedEmailTemplates\UserEmailVerification.htm" />
+    <Content Include="wwwroot\metro\404.html" />
+    <Content Include="wwwroot\metro\about.html" />
+    <Content Include="wwwroot\metro\blog.html" />
+    <Content Include="wwwroot\metro\cart.html" />
+    <Content Include="wwwroot\metro\check-out.html" />
+    <Content Include="wwwroot\metro\contact.html" />
+    <Content Include="wwwroot\metro\css\animate.min.css" />
+    <Content Include="wwwroot\metro\css\bootstrap.min.css" />
+    <Content Include="wwwroot\metro\css\color\amber.css" />
+    <Content Include="wwwroot\metro\css\color\amber.less" />
+    <Content Include="wwwroot\metro\css\color\black.css" />
+    <Content Include="wwwroot\metro\css\color\black.less" />
+    <Content Include="wwwroot\metro\css\color\blue-grey.css" />
+    <Content Include="wwwroot\metro\css\color\blue-grey.less" />
+    <Content Include="wwwroot\metro\css\color\blue.css" />
+    <Content Include="wwwroot\metro\css\color\blue.less" />
+    <Content Include="wwwroot\metro\css\color\cyan.css" />
+    <Content Include="wwwroot\metro\css\color\cyan.less" />
+    <Content Include="wwwroot\metro\css\color\deep-orange.css" />
+    <Content Include="wwwroot\metro\css\color\deep-orange.less" />
+    <Content Include="wwwroot\metro\css\color\deep-purle.css" />
+    <Content Include="wwwroot\metro\css\color\deep-purle.less" />
+    <Content Include="wwwroot\metro\css\color\green.css" />
+    <Content Include="wwwroot\metro\css\color\green.less" />
+    <Content Include="wwwroot\metro\css\color\img\blog\blog-mask.png" />
+    <Content Include="wwwroot\metro\css\color\img\blog\single-blog2.jpg" />
+    <Content Include="wwwroot\metro\css\color\img\blog\single-blog3.jpg" />
+    <Content Include="wwwroot\metro\css\color\img\inner-page-banner.jpg" />
+    <Content Include="wwwroot\metro\css\color\img\preloader.gif" />
+    <Content Include="wwwroot\metro\css\color\indigo.css" />
+    <Content Include="wwwroot\metro\css\color\indigo.less" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\arrows-2.png" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\arrows.png" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\bullets-2.png" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\bullets.png" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\left-arrow.png" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\loading-2.gif" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\loading.gif" />
+    <Content Include="wwwroot\metro\css\color\lib\custom-slider\img\right-arrow.png" />
+    <Content Include="wwwroot\metro\css\color\light-blue.css" />
+    <Content Include="wwwroot\metro\css\color\light-blue.less" />
+    <Content Include="wwwroot\metro\css\color\light-green.css" />
+    <Content Include="wwwroot\metro\css\color\light-green.less" />
+    <Content Include="wwwroot\metro\css\color\lime.css" />
+    <Content Include="wwwroot\metro\css\color\lime.less" />
+    <Content Include="wwwroot\metro\css\color\orange.css" />
+    <Content Include="wwwroot\metro\css\color\orange.less" />
+    <Content Include="wwwroot\metro\css\color\palette.css" />
+    <Content Include="wwwroot\metro\css\color\palette.less" />
+    <Content Include="wwwroot\metro\css\color\pink.css" />
+    <Content Include="wwwroot\metro\css\color\pink.less" />
+    <Content Include="wwwroot\metro\css\color\purple.css" />
+    <Content Include="wwwroot\metro\css\color\purple.less" />
+    <Content Include="wwwroot\metro\css\color\red.css" />
+    <Content Include="wwwroot\metro\css\color\red.less" />
+    <Content Include="wwwroot\metro\css\color\teal.css" />
+    <Content Include="wwwroot\metro\css\color\teal.less" />
+    <Content Include="wwwroot\metro\css\font-awesome.min.css" />
+    <Content Include="wwwroot\metro\css\font\flaticon.css" />
+    <Content Include="wwwroot\metro\css\font\Flaticon.eot" />
+    <Content Include="wwwroot\metro\css\font\Flaticon.eot%40" />
+    <Content Include="wwwroot\metro\css\font\flaticon.html" />
+    <Content Include="wwwroot\metro\css\font\Flaticon.svg" />
+    <Content Include="wwwroot\metro\css\font\Flaticon.ttf" />
+    <Content Include="wwwroot\metro\css\font\Flaticon.woff" />
+    <Content Include="wwwroot\metro\css\font\_flaticon.scss" />
+    <Content Include="wwwroot\metro\css\main.css" />
+    <Content Include="wwwroot\metro\css\meanmenu.min.css" />
+    <Content Include="wwwroot\metro\css\normalize.css" />
+    <Content Include="wwwroot\metro\css\owl.carousel.css" />
+    <Content Include="wwwroot\metro\css\owl.carousel.min.css" />
+    <Content Include="wwwroot\metro\css\owl.theme.css" />
+    <Content Include="wwwroot\metro\css\owl.theme.default.min.css" />
+    <Content Include="wwwroot\metro\css\owl.transitions.css" />
+    <Content Include="wwwroot\metro\css\select2.min.css" />
+    <Content Include="wwwroot\metro\css\switch-style.css" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.eot%40" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.eot%40v=4.5.0" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.svg%40v=4.5.0" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.ttf%40v=4.5.0" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.woff%40v=4.5.0" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.woff2" />
+    <Content Include="wwwroot\metro\fonts\fontawesome-webfont.woff2%40v=4.5.0.html" />
+    <Content Include="wwwroot\metro\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\metro\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwroot\metro\fonts\glyphicons-halflings-regular.eot%40" />
+    <Content Include="wwwroot\metro\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\metro\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\metro\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwroot\metro\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="wwwroot\metro\fonts\glyphicons-halflings-regular.woff2.html" />
+    <Content Include="wwwroot\metro\img\about-us.jpg" />
+    <Content Include="wwwroot\metro\img\About\1.jpg" />
+    <Content Include="wwwroot\metro\img\About\about-us.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\1.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\2.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\3.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\4.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\5.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\6.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\7.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\8.jpg" />
+    <Content Include="wwwroot\metro\img\best-seller\9.jpg" />
+    <Content Include="wwwroot\metro\img\blog\1.jpg" />
+    <Content Include="wwwroot\metro\img\blog\2.jpg" />
+    <Content Include="wwwroot\metro\img\blog\3.jpg" />
+    <Content Include="wwwroot\metro\img\blog\4.jpg" />
+    <Content Include="wwwroot\metro\img\blog\5.jpg" />
+    <Content Include="wwwroot\metro\img\blog\6.jpg" />
+    <Content Include="wwwroot\metro\img\blog\7.jpg" />
+    <Content Include="wwwroot\metro\img\blog\blog-mask.png" />
+    <Content Include="wwwroot\metro\img\blog\inner1.jpg" />
+    <Content Include="wwwroot\metro\img\blog\inner2.jpg" />
+    <Content Include="wwwroot\metro\img\blog\inner3.jpg" />
+    <Content Include="wwwroot\metro\img\blog\inner4.jpg" />
+    <Content Include="wwwroot\metro\img\blog\inner5.jpg" />
+    <Content Include="wwwroot\metro\img\blog\inner6.jpg" />
+    <Content Include="wwwroot\metro\img\blog\single-blog1.jpg" />
+    <Content Include="wwwroot\metro\img\blog\single-blog2.jpg" />
+    <Content Include="wwwroot\metro\img\blog\single-blog3.jpg" />
+    <Content Include="wwwroot\metro\img\brand\1.jpg" />
+    <Content Include="wwwroot\metro\img\brand\2.jpg" />
+    <Content Include="wwwroot\metro\img\brand\3.jpg" />
+    <Content Include="wwwroot\metro\img\brand\4.jpg" />
+    <Content Include="wwwroot\metro\img\brand\5.jpg" />
+    <Content Include="wwwroot\metro\img\brand\6.jpg" />
+    <Content Include="wwwroot\metro\img\favicon.png" />
+    <Content Include="wwwroot\metro\img\inner-page-banner.jpg" />
+    <Content Include="wwwroot\metro\img\logo.png" />
+    <Content Include="wwwroot\metro\img\logo2.png" />
+    <Content Include="wwwroot\metro\img\offer.png" />
+    <Content Include="wwwroot\metro\img\payment-method1.jpg" />
+    <Content Include="wwwroot\metro\img\payment-method2.jpg" />
+    <Content Include="wwwroot\metro\img\payment-method3.jpg" />
+    <Content Include="wwwroot\metro\img\payment-method4.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\1.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\2.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\3.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\4.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\5.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\6.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\7.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\8.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\9.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width1.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width10.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width11.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width12.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width2.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width3.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width4.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width5.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width6.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width7.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width8.jpg" />
+    <Content Include="wwwroot\metro\img\portfolio\full-width9.jpg" />
+    <Content Include="wwwroot\metro\img\preloader.gif" />
+    <Content Include="wwwroot\metro\img\product\1.jpg" />
+    <Content Include="wwwroot\metro\img\product\10.jpg" />
+    <Content Include="wwwroot\metro\img\product\11.jpg" />
+    <Content Include="wwwroot\metro\img\product\12.jpg" />
+    <Content Include="wwwroot\metro\img\product\13.jpg" />
+    <Content Include="wwwroot\metro\img\product\14.jpg" />
+    <Content Include="wwwroot\metro\img\product\15.jpg" />
+    <Content Include="wwwroot\metro\img\product\16.jpg" />
+    <Content Include="wwwroot\metro\img\product\17.jpg" />
+    <Content Include="wwwroot\metro\img\product\18.jpg" />
+    <Content Include="wwwroot\metro\img\product\2.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-1.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-2.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-3.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-4.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-5.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-6.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-7.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-8.jpg" />
+    <Content Include="wwwroot\metro\img\product\3-columns-9.jpg" />
+    <Content Include="wwwroot\metro\img\product\3.jpg" />
+    <Content Include="wwwroot\metro\img\product\4.jpg" />
+    <Content Include="wwwroot\metro\img\product\5.jpg" />
+    <Content Include="wwwroot\metro\img\product\51.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\metro\img\product\6.jpg" />
+    <Content Include="wwwroot\metro\img\product\7.jpg" />
+    <Content Include="wwwroot\metro\img\product\8.jpg" />
+    <Content Include="wwwroot\metro\img\product\9.jpg" />
+   
+    <Content Include="wwwroot\metro\img\product\AllProductImage\1.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\metro\img\product\AllProductImage\2492007215931-7.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\51.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\52.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\53.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\c1.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\c2.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\c3.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\ProductColumn\1.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    
+    <Content Include="wwwroot\metro\img\product\AllProductImage\ProductColumn\LostFile_JPG_5363336.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\ProductColumn\picture968.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\ProductColumn\Untitled 111.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\ProductColumn\Untitled 89.jpg" />
+    <Content Include="wwwroot\metro\img\product\AllProductImage\ProductColumn\عکس۰۰۶۲_001.jpg" />
+    <Content Include="wwwroot\metro\img\product\cart1.jpg" />
+    <Content Include="wwwroot\metro\img\product\cart2.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\1.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\10.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\11.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\2.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\3.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\4.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\5.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\6.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\7.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\8.jpg" />
+    <Content Include="wwwroot\metro\img\product\full-width\9.jpg" />
+    <Content Include="wwwroot\metro\img\product\grid\1.jpg" />
+    <Content Include="wwwroot\metro\img\product\grid\2.jpg" />
+    <Content Include="wwwroot\metro\img\product\grid\3.jpg" />
+    <Content Include="wwwroot\metro\img\product\grid\4.jpg" />
+    <Content Include="wwwroot\metro\img\product\grid\5.jpg" />
+    <Content Include="wwwroot\metro\img\product\product-details1.jpg" />
+    <Content Include="wwwroot\metro\img\product\product-details4.jpg" />
+     
+    <Content Include="wwwroot\metro\img\services\home1-services1.png" />
+    <Content Include="wwwroot\metro\img\services\home1-services2.png" />
+    <Content Include="wwwroot\metro\img\services\home1-services3.png" />
+    <Content Include="wwwroot\metro\img\services\home2-services1.jpg" />
+    <Content Include="wwwroot\metro\img\services\home2-services2.jpg" />
+    <Content Include="wwwroot\metro\img\services\home2-services3.jpg" />
+    <Content Include="wwwroot\metro\img\services\home4-services1.jpg" />
+    <Content Include="wwwroot\metro\img\services\home4-services2.jpg" />
+    <Content Include="wwwroot\metro\img\services\home4-services3.jpg" />
+    <Content Include="wwwroot\metro\img\services\home4-services4.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\1.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\2.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\3.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\4.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\banner1.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\banner2.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\blog1.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\blog2.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\blog3.jpg" />
+    <Content Include="wwwroot\metro\img\sidebar\blog4.jpg" />
+    <Content Include="wwwroot\metro\img\slider-1\layer-1.png" />
+    <Content Include="wwwroot\metro\img\slider-1\layer2-4.png" />
+    <Content Include="wwwroot\metro\img\slider-1\layer2-5.png" />
+    <Content Include="wwwroot\metro\img\slider-1\layer2-6.png" />
+    <Content Include="wwwroot\metro\img\slider-1\slider-2.jpg" />
+    <Content Include="wwwroot\metro\img\slider-2\3.jpg" />
+    <Content Include="wwwroot\metro\img\slider-3\slider-1.jpg" />
+    <Content Include="wwwroot\metro\img\slider-3\slider-2.jpg" />
+    <Content Include="wwwroot\metro\img\slider-4\1.jpg" />
+    <Content Include="wwwroot\metro\img\slider-4\2.jpg" />
+    <Content Include="wwwroot\metro\img\team\1.png" />
+    <Content Include="wwwroot\metro\img\team\2.png" />
+    <Content Include="wwwroot\metro\img\team\3.png" />
+    <Content Include="wwwroot\metro\img\team\4.png" />
+    <Content Include="wwwroot\metro\index.html" />
+    <Content Include="wwwroot\metro\index2.html" />
+    <Content Include="wwwroot\metro\index3.html" />
+    <Content Include="wwwroot\metro\index4.html" />
+    <Content Include="wwwroot\metro\js\bootstrap.min.js" />
+    <Content Include="wwwroot\metro\js\isotope.pkgd.min.js" />
+    <Content Include="wwwroot\metro\js\jquery.actual.min.js" />
+    <Content Include="wwwroot\metro\js\jquery.countdown.min.js" />
+    <Content Include="wwwroot\metro\js\jquery.meanmenu.min.js" />
+    <Content Include="wwwroot\metro\js\jquery.nav.js" />
+    <Content Include="wwwroot\metro\js\jquery.scrollUp.min.js" />
+    <Content Include="wwwroot\metro\js\livicons-1.3.js" />
+    <Content Include="wwwroot\metro\js\main.js" />
+    <Content Include="wwwroot\metro\js\owl.carousel.min.js" />
+    <Content Include="wwwroot\metro\js\plugins.js" />
+    <Content Include="wwwroot\metro\js\raphael.js" />
+    <Content Include="wwwroot\metro\js\select2.min.js" />
+    <Content Include="wwwroot\metro\js\switch-style.js" />
+    <Content Include="wwwroot\metro\js\validator.min.js" />
+    <Content Include="wwwroot\metro\js\vendor\jquery-2.2.4.min.js" />
+    <Content Include="wwwroot\metro\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="wwwroot\metro\js\wow.min.js" />
+    <Content Include="wwwroot\metro\lib\custom-slider\css\nivo-slider.css" />
+    <Content Include="wwwroot\metro\lib\custom-slider\css\preview.css" />
+    <Content Include="wwwroot\metro\lib\custom-slider\home.js" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\arrows-2.png" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\arrows.png" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\bullets-2.png" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\bullets.png" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\left-arrow.png" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\loading-2.gif" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\loading.gif" />
+    <Content Include="wwwroot\metro\lib\custom-slider\img\right-arrow.png" />
+    <Content Include="wwwroot\metro\lib\custom-slider\js\jquery.nivo.slider.js" />
+    <Content Include="wwwroot\metro\lib\ix.html" />
+    <Content Include="wwwroot\metro\login-registration.html" />
+    <Content Include="wwwroot\metro\portfolio1.html" />
+    <Content Include="wwwroot\metro\portfolio2.html" />
+    <Content Include="wwwroot\metro\product-details1.html" />
+    <Content Include="wwwroot\metro\product-details2.html" />
+    <Content Include="wwwroot\metro\shop1.html" />
+    <Content Include="wwwroot\metro\shop2.html" />
+    <Content Include="wwwroot\metro\shop3.html" />
+    <Content Include="wwwroot\metro\shop4.html" />
+    <Content Include="wwwroot\metro\shop5.html" />
+    <Content Include="wwwroot\metro\shop6.html" />
+    <Content Include="wwwroot\metro\shop7.html" />
+    <Content Include="wwwroot\metro\single-blog.html" />
+    <Content Include="wwwroot\metro\style.css" />
+    <Content Include="wwwroot\metro\wishlist.html" />
+    <Content Include="wwwroot\picgallery\PicGalleryCollection.css" />
+    <Content Include="wwwroot\picgallery\PicGalleryCollection.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CoreCompat.System.Drawing" Version="1.0.0-beta006" />
+    <PackageReference Include="MailKit" Version="1.16.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="1.1.2 " />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Tools" Version="1.1.0-preview4-final" Type="" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
+
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.3.1" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.3.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.3.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.3.0" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
+   
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Features\**\*.cshtml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <Compile Remove="Areas\Administrator\Views\DownLoadFileInformations\**" />
+    <Compile Remove="ClassHelper\**" />
+    <Compile Remove="Services\Utilites\**" />
+    <Compile Remove="Utilites\ClassHelper\**" />
+    <Compile Remove="Utilites\LocalizedEmailTemplates\**" />
+    <Compile Remove="Views\ShoppingCart\Components\**" />
+    <Content Remove="Areas\Administrator\Views\DownLoadFileInformations\**" />
+    <Content Remove="ClassHelper\**" />
+    <Content Remove="Services\Utilites\**" />
+    <Content Remove="Utilites\ClassHelper\**" />
+    <Content Remove="Utilites\LocalizedEmailTemplates\**" />
+    <Content Remove="Views\ShoppingCart\Components\**" />
+    <EmbeddedResource Remove="Areas\Administrator\Views\DownLoadFileInformations\**" />
+    <EmbeddedResource Remove="ClassHelper\**" />
+    <EmbeddedResource Remove="Services\Utilites\**" />
+    <EmbeddedResource Remove="Utilites\ClassHelper\**" />
+    <EmbeddedResource Remove="Utilites\LocalizedEmailTemplates\**" />
+    <EmbeddedResource Remove="Views\ShoppingCart\Components\**" />
+    <None Remove="Areas\Administrator\Views\DownLoadFileInformations\**" />
+    <None Remove="ClassHelper\**" />
+    <None Remove="Services\Utilites\**" />
+    <None Remove="Utilites\ClassHelper\**" />
+    <None Remove="Utilites\LocalizedEmailTemplates\**" />
+    <None Remove="Views\ShoppingCart\Components\**" />
+    <Compile Remove="Areas\Administrator\Controllers\DownLoadFileInformationsController.cs" />
+    <Compile Remove="Areas\Administrator\Models\Admin.cs" />
+    <Compile Remove="Areas\Administrator\Models\Comment.cs" />
+    <Compile Remove="Areas\Administrator\Models\DownLoadFileInformation.cs" />
+    <Compile Remove="Areas\Administrator\Models\NewsLetter.cs" />
+    <Compile Remove="Areas\Administrator\Models\NewsLetterCategory.cs" />
+    <Compile Remove="Areas\Administrator\Models\Post.cs" />
+    <Compile Remove="Areas\Administrator\Models\PostCategory.cs" />
+    <Compile Remove="Areas\Administrator\Models\UserContact.cs" />
+    <Compile Remove="Models\ProductGallery.cs" />
+    <Compile Remove="Models\Purchase.cs" />
+    <Compile Remove="Utilites\PaymentResult.cs" />
+    <Compile Remove="ViewComponents\ViewCart.cs" />
+    <Content Remove="Areas\Administrator\Views\Shared\Authorize.cshtml" />
+    <Content Remove="Areas\Administrator\Views\Shared\Error.cshtml" />
+    <Content Remove="Areas\Administrator\Views\Shared\_LoginPartial.cshtml" />
+    <Content Remove="Areas\Administrator\_ViewImports.cshtml" />
+    <Content Remove="Areas\Administrator\_ViewStart.cshtml" />
+    <Content Remove="Models\ModalDetails.cshtml" />
+    <Content Remove="Views\Account\Login.cshtml" />
+    <Content Remove="Views\Account\Register.cshtml" />
+    <Content Remove="Views\Products\_Search.cshtml" />
+    <Content Remove="Views\Shared\_BasketPartial.cshtml" />
+    <Content Remove="wwwroot/metro\img\Category\4.jpg" />
+    <None Remove="Properties\PublishProfiles\CustomProfile7.pubxml" />
+    <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Remove="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Update="wwwroot\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\metro\img\Category\" />
+    <Folder Include="wwwroot\metro\img\Category\" />
+    <Folder Include="wwwroot\metro\img\Category\" />
+    <Folder Include="wwwroot\metro\img\product\Slider\" />
+    <Folder Include="wwwroot\metro\Files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Admin\font-awesome\css\font-awesome.css" />
+    <None Include="wwwroot\Admin\font-awesome\font\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontd41d.eot" />
+    <None Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontf77b.eot" />
+    <None Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontf77b.ttf" />
+    <None Include="wwwroot\Admin\font-awesome\font\fontawesome-webfontf77b.woff" />
+    <None Include="wwwroot\Admin\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <None Include="wwwroot\Admin\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <None Include="wwwroot\Admin\css\bootstrap-reset.css" />
+    <None Include="wwwroot\Admin\css\bootstrap.min.css" />
+    <None Include="wwwroot\Admin\css\owl.carousel.css" />
+    <None Include="wwwroot\Admin\css\style-responsive.css" />
+    <None Include="wwwroot\Admin\css\style.css" />
+    <None Include="wwwroot\Admin\fonts\Descr.WD3" />
+    <None Include="wwwroot\Admin\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\Admin\fonts\glyphicons-halflings-regular.eot%40" />
+    <None Include="wwwroot\Admin\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\Admin\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\Admin\fonts\glyphicons-halflings-regulard41d.eot" />
+    <None Include="wwwroot\Admin\fonts\rtl.css" />
+    <None Include="wwwroot\Admin\fonts\Yekan-modified.eot" />
+    <None Include="wwwroot\Admin\fonts\Yekan-modified.svg" />
+    <None Include="wwwroot\Admin\fonts\Yekan-modified.ttf" />
+    <None Include="wwwroot\Admin\fonts\Yekan-modified.woff" />
+    <None Include="wwwroot\Admin\img\404_icon.png" />
+    <None Include="wwwroot\Admin\img\500_icon.png" />
+    <None Include="wwwroot\Admin\img\about.png" />
+    <None Include="wwwroot\Admin\img\admin.png" />
+    <None Include="wwwroot\Admin\img\admin_s.png" />
+    <None Include="wwwroot\Admin\img\arrow-up.png" />
+    <None Include="wwwroot\Admin\img\avatar-mini.jpg" />
+    <None Include="wwwroot\Admin\img\avatar-mini2.jpg" />
+    <None Include="wwwroot\Admin\img\avatar-mini3.jpg" />
+    <None Include="wwwroot\Admin\img\avatar-mini4.jpg" />
+    <None Include="wwwroot\Admin\img\avatar1.jpg" />
+    <None Include="wwwroot\Admin\img\avatar1_small.jpg" />
+    <None Include="wwwroot\Admin\img\category.png" />
+    <None Include="wwwroot\Admin\img\category_s.png" />
+    <None Include="wwwroot\Admin\img\chart-texture.jpg" />
+    <None Include="wwwroot\Admin\img\chat-avatar.jpg" />
+    <None Include="wwwroot\Admin\img\chat-avatar2.jpg" />
+    <None Include="wwwroot\Admin\img\checkbox\check-off.png" />
+    <None Include="wwwroot\Admin\img\checkbox\check-on.png" />
+    <None Include="wwwroot\Admin\img\checkbox\Descr.WD3" />
+    <None Include="wwwroot\Admin\img\checkbox\radio-off.png" />
+    <None Include="wwwroot\Admin\img\checkbox\radio-on.png" />
+    <None Include="wwwroot\Admin\img\checkbox\Thumbs.db" />
+    <None Include="wwwroot\Admin\img\comment.png" />
+    <None Include="wwwroot\Admin\img\comment_s.png" />
+    <None Include="wwwroot\Admin\img\contactus.png" />
+    <None Include="wwwroot\Admin\img\customSelect-arrow.gif" />
+    <None Include="wwwroot\Admin\img\delete.png" />
+    <None Include="wwwroot\Admin\img\Descr.WD3" />
+    <None Include="wwwroot\Admin\img\download_s.png" />
+    <None Include="wwwroot\Admin\img\favicon.html" />
+    <None Include="wwwroot\Admin\img\follower-avatar.jpg" />
+    <None Include="wwwroot\Admin\img\left-arrow.png" />
+    <None Include="wwwroot\Admin\img\loading %281%29.gif" />
+    <None Include="wwwroot\Admin\img\mail-avatar.jpg" />
+    <None Include="wwwroot\Admin\img\mask.png" />
+    <None Include="wwwroot\Admin\img\newsletter_s.png" />
+    <None Include="wwwroot\Admin\img\pro-ac-1.png" />
+    <None Include="wwwroot\Admin\img\pro-ac-2.png" />
+    <None Include="wwwroot\Admin\img\product1.jpg" />
+    <None Include="wwwroot\Admin\img\product2.png" />
+    <None Include="wwwroot\Admin\img\product3.png" />
+    <None Include="wwwroot\Admin\img\profile-avatar.jpg" />
+    <None Include="wwwroot\Admin\img\recycle_bin.png" />
+    <None Include="wwwroot\Admin\img\right-arrow.png" />
+    <None Include="wwwroot\Admin\img\ring.jpg" />
+    <None Include="wwwroot\Admin\img\search-icon.jpg" />
+    <None Include="wwwroot\Admin\img\send_s.png" />
+    <None Include="wwwroot\Admin\img\sm-img-1.jpg" />
+    <None Include="wwwroot\Admin\img\sm-img-2.jpg" />
+    <None Include="wwwroot\Admin\img\sm-img-3.jpg" />
+    <None Include="wwwroot\Admin\img\Thumbs.db" />
+    <None Include="wwwroot\Admin\img\toloo121.png" />
+    <None Include="wwwroot\Admin\img\vector-lab.jpg" />
+    <None Include="wwwroot\Admin\img\writing.png" />
+    <None Include="wwwroot\Admin\img\writing_s.png" />
+    <None Include="wwwroot\Admin\js\all-chartjs.js" />
+    <None Include="wwwroot\Admin\js\bootstrap-switch.js" />
+    <None Include="wwwroot\Admin\js\bootstrap.min.js" />
+    <None Include="wwwroot\Admin\js\common-scripts.js" />
+    <None Include="wwwroot\Admin\js\dynamic-table.js" />
+    <None Include="wwwroot\Admin\js\easy-pie-chart.js" />
+    <None Include="wwwroot\Admin\js\external-dragging-calendar.js" />
+    <None Include="wwwroot\Admin\js\form-component.js" />
+    <None Include="wwwroot\Admin\js\form-validation-script.js" />
+    <None Include="wwwroot\Admin\js\ga.js" />
+    <None Include="wwwroot\Admin\js\gritter.js" />
+    <None Include="wwwroot\Admin\js\jquery-1.8.3.min.js" />
+    <None Include="wwwroot\Admin\js\jquery-ui-1.9.2.custom.min.js" />
+    <None Include="wwwroot\Admin\js\jquery.customSelect.min.js" />
+    <None Include="wwwroot\Admin\js\jquery.js" />
+    <None Include="wwwroot\Admin\js\jquery.nicescroll.js" />
+    <None Include="wwwroot\Admin\js\jquery.scrollTo.min.js" />
+    <None Include="wwwroot\Admin\js\jquery.sparkline.js" />
+    <None Include="wwwroot\Admin\js\jquery.stepy.js" />
+    <None Include="wwwroot\Admin\js\jquery.tagsinput.js" />
+    <None Include="wwwroot\Admin\js\jquery.validate.min.js" />
+    <None Include="wwwroot\Admin\js\morris-script.js" />
+    <None Include="wwwroot\Admin\js\owl.carousel.js" />
+    <None Include="wwwroot\Admin\js\sliders.js" />
+    <None Include="wwwroot\Admin\js\sparkline-chart.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\fonts\glyphicons-halflings-regular.eot%40">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+</Project>

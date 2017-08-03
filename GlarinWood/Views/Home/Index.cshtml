@@ -1,0 +1,131 @@
+﻿@*@model IEnumerable<GlarinWood.Areas.Administrator.Models.Slider>*@
+@model GlarinWood.Areas.Administrator.ViewModels.Slider_IndexViewModel
+@{
+    ViewData["Title"] = "صفحه نخست";
+}
+ 
+@{
+    if (Model != null)
+    {
+         <!-- Slider Area Start Here -->
+        //foreach (var item in Model)
+        //{
+        <div class="main-slider2" style="color:black">
+            <div class="bend niceties preview-1">
+                <div id="ensign-nivoslider-3" class="slides">
+
+
+                    @*<img src="~/metro/img/slider-2/3.jpg" alt="" title="#slider-direction-3" />*@
+                    <img src="~/metro/img/product/Slider/@Model.slider.Image_1" alt="درب کابینت" title="#slider-direction-1" />
+                    <img src="~/metro/img/product/Slider/@Model.slider.Image_2" alt="گلارین چوب" title="#slider-direction-3" />
+
+                    @*<img src="~/metro/img/slider-2/7.jpg" alt="" title="#slider-direction-1" />*@
+
+
+
+
+                </div>
+                <div id="slider-direction-1" class="t-cn slider-direction">
+                    <div class="slider-content t-lfl s-tb slider-1">
+                        <div class="title-container s-tb-c">
+                            <h1 class="title1"   style="color:orange"> @Model.slider.Title_1 </h1>
+                            @*<p style="color:gold;">تولید و پخش درب کابینت</p>*@
+                            <p style="color:orangered;font-size:32px;">@Model.slider.Description_1</p>
+                            <a asp-action="List" asp-controller="PicGalleries" class="btn btn-warning">گالری تصاویر آشپزخانه</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="slider-direction-3" class="slider-direction">
+                    <div class="slider-content t-lfr s-tb slider-3">
+                        <div class="title-container s-tb-c">
+                            <h1 class="title1"  style="color:orange">@Model.slider.Title_2</h1>
+                            <p style="color:orangered;font-size:32px;">@Model.slider.Description_2</p>
+
+                            <a asp-action="List" asp-controller="PicGalleries" class="btn btn-warning "  >نمونه پروژه انجام شده </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        //}
+        <!-- Slider Area End Here -->
+<!-- Featured Products Area End Here -->
+<div class="featured-products-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="title-carousel" style="text-align:center;top:0px">جدیدترین نمونه کارها</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="featured-products-carousel3 carousel-margin" id="featured-products-carousel3">
+                @foreach (var item in Model.picGallery.ToList())
+                {
+                    <div class="product-box1">
+                        <ul class="product-social">
+                            <li> <a asp-action="List" asp-controller="PicCollectionGalleries" asp-route-id="@item.Id"><span class=" livicon" data-n="eye-open" data-s="40" data-c="#de5100" data-hc="#0051ff"></span></a></li>
+                        </ul>
+                        <div class="product-img-holder">
+                            <a href="#"><img src="~/metro/img/PicGallery/@item.Image" alt="product"></a>
+                        </div>
+                        <div class="product-content-holder">
+                            <h3><a href="#">@item.Name</a></h3>
+                            @*<span>@item.Description</span>*@
+                        </div>
+                    </div>
+                 }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured Products Area End Here -->
+    }
+    else
+    {
+        <div style="text-align:center">
+            <h1><a style="text-align:center">گلارین چوب</a></h1>
+        </div>
+    }
+
+}
+<!-- Advantage Area Start Here -->
+<div class="advantage3-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="advantage-area-box">
+                    <div class="advantage-area-box-icon">
+                        <a href="#"><i class="flaticon-truck"></i></a>
+                    </div>
+                    <div class="advantage-area-box-content">
+                        <h3> خرید سریع و آسان </h3>
+                        <p>تولید انواع محصولات و سفارشات </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="advantage-area-box">
+                    <div class="advantage-area-box-icon">
+                        <a href="#"><i class="flaticon-headphones"></i></a>
+                    </div>
+                    <div class="advantage-area-box-content">
+                        <h3>24/7  پشتیبانی</h3>
+                        <p>در زمانی که به ما نیاز دارید</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="advantage-area-box">
+                    <div class="advantage-area-box-icon">
+                        <a href="#"><i class="flaticon-reload"></i></a>
+                    </div>
+                    <div class="advantage-area-box-content">
+                        <h3>100% بازگشت پول</h3>
+                        <p>گارانتی 30 روزه</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Advantage Area End Here -->

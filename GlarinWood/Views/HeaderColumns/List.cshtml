@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GlarinWood.Models.HeaderColumn>
+
+@{
+    ViewData["Title"] = "لیست سرستون ها";
+    //Layout = "~/Areas/Admini/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
+
+
+}
+<!-- Shop Page Area Start Here -->
+<div class="shop-page-area">
+    @*<h2 style="text-align:center">@Model</h2>*@
+    @*<h1 style="font-family:Verdana;color:teal;text-align:center"> </h1>*@
+    <div class="container">
+        <div class="row products-container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                    <div class="product-box1">
+                        <ul class="product-social">
+                            @*<li><a href="shop7.html#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                                <li><a href="shop7.html#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>*@
+                             <li> <a href=" javascript:void(0)" class=" btnDetails " data-value="@item.Id"><span class=" livicon" data-n="eye-open" data-s="40" data-c="#de5100" data-hc="#0051ff"></span></a></li>
+                        </ul>
+                        @*style="width:272px;height:380px;"*@
+                        <div class="product-img-holder">
+                            <img  src="~/metro/img/product/AllProductImage/ProductColumn/@item.Image" alt="product">
+                        </div>
+                        <div class="product-content-holder">
+                            <h3 style="font-family:Tahoma;text-align:center">@item.Name</h3>
+                            @*<span>@item.</span>*@
+                            @*<span>@item.</span>*@
+                            @*<span>@item.CodeColor</span>*@
+
+                        </div>
+                    </div>
+                </div>
+               <!-- Modal Dialog Box Start Here-->
+                <div id="conteudoModal"></div>
+                 <!-- Modal Dialog Box End Here-->
+            }
+        </div>
+
+        <!--صفحه بندی-->
+        <div class="row text-center">
+            <nav>
+                <ul class="pagination">
+                    <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+                    @for (int i = 1; i <= (ViewBag.PageCount + 1); i++)
+                    {
+                        <li class="@(((int)ViewBag.PageID==i)?"active":"")"><a asp-route-id="@ViewData["CategoryViewId"]" asp-route-pageid="@i" asp-action="List">@i<span class="sr-only">(current)</span></a></li>
+                    }
+
+                    <li class="disabled"><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <!--انتهای صفحه بندی-->
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btnDetails").click(function () {
+                var id = $(this).data("value");
+                $("#conteudoModal").load("/HeaderColumns/ModalDetails/" + id,
+                    function () {
+                        $('#myModal').modal("show")
+                    }
+                );
+            })
+
+        })
+    </script>
+}
+    </div>
+</div>

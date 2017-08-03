@@ -1,0 +1,69 @@
+﻿@model GlarinWood.Areas.Administrator.ViewModels.About_ProjectViewModels
+
+@{
+    ViewData["Title"] = "درباره ما";
+}
+	<!-- درباره ما  -->
+<div class="about-us-page-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="">
+                    <a href="#"><img src="~/metro/img/About/@Model.About_Us.Image" alt="about" class="img-responsive img-thumbnail"></a>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <div class="about-us-page-right" style="direction:rtl">
+                    <h2>@Model.About_Us.Title</h2>
+                    <p>
+                       @Model.About_Us.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- انتهای درباره ما -->
+   <!-- نمونه الگوها -->
+<div class="expert-team-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="section-title">
+                    <span class="title-bar-left"></span>
+                    <h2>نمونه پروژه ها</h2>
+                    <span class="title-bar-right"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                foreach (var item in Model.Project_Us)
+                {
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="expert-team-box">
+                            <ul class="expert-team-social">
+                                <li><p style="color:whitesmoke;">@item.Image_Description<i aria-hidden="true"></i></p></li>
+                               
+                            </ul>
+                            <div class="team-img-holder">
+                                @*<a href="about.html#"><img src="~/metro/img/About/@Model.About_Us.Image" alt="about" class="img-responsive"></a>*@
+                                
+                                <a href="#"><img src="~/metro/img/Projects/@item.Image" alt="team" class="img-responsive img-circle"></a>
+                            </div>
+                            <div class="team-content-holder">
+                                <h3>@item.Title_Project</h3>
+                                <p>@item.Description </p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+           
+
+ 
+        </div>
+    </div>
+</div>
+<!-- انتهای نمونه الگوها -->

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+@*<img src="~/Content/Images/h.png" />*@
+ 
+
+<div class="cart-page-area" style="font-family:'B Yekan';">
+
+    <div class="container">
+  
+
+                     <div class="panel panel-default" style="text-align:center;">
+                        <div class="panel panel-heading">
+                            <h3><span>وضعیت پرداخت:</span> @ViewBag.Message</h3>
+                        </div>
+                        <div class="panel panel-body">
+                            <script style="text-align:center" src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
+                            <h3><span>کد پیگیری:</span>@ViewBag.SaleReferenceId</h3>
+                            <h3><span>شماره تراکنش:</span>@ViewBag.PaymentID</h3>
+                            <div class="panel panel-footer">
+                                <a class="btn btn-warning" asp-action="Pay" asp-controller="ShoppingCart">بازگشت به صفحه پرداخت</a>
+                            </div>
+                        </div>
+           </div>
+
+
+    </div>
+</div>

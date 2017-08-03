@@ -1,0 +1,124 @@
+﻿@model GlarinWood.Models.ContactViewModel
+<br />
+<div class="container">
+    <div class="row">
+       
+        <div class="col-md-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.112439253957!2d51.60565255806628!3d35.54814797737611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f91e8d634216bcd%3A0xbaf17c59bad174b5!2z2q_ZhNin2LHbjNmGINqG2YjYqA!5e0!3m2!1sen!2s!4v1497188074223" width="500" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="col-md-5 col-md-offset-1">
+            @*col-md-offset-5*@
+            @*@if (ViewBag.Message == null)
+                {*@
+            <form method="post" dir="rtl">
+                @*class="form-horizontal"
+                    role="form"
+                    data-ajax="true"
+                    data-ajax-loading="#Progress"
+                    data-ajax-success="myJsMethod"*@
+
+                @*<div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-muted"></span>
+                    </div>*@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    @*<label asp-for="Email">رایانامه</label>*@
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject"></label>
+                    <input asp-for="Subject" class="form-control" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message"></label>
+                    <textarea rows="5" cols="15" asp-for="Message" class="form-control"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success btnAjax">ارسال</button>
+                    @*<span class="livicon" data-n="envelope-put" data-s="25" data-c="#de5100" data-hc="#0051ff"></span>*@
+                </div>
+
+
+
+                @*<div id="Progress" style="display: none">
+                    <img src="images/loading.gif" alt="loading..." />
+                </div>*@
+
+            </form>
+            @*}*@
+
+            @*@section Scripts{
+                    <script type="text/javascript">
+                        function myJsMethod(data, status, xhr) {
+                            alert(data.param1);
+                        }
+                    </script>
+                }*@
+
+            @*<div>
+                    <div>
+                        @if (ViewData["Message"] != null)
+                    {
+                            <div>@ViewData["Message"]</div>
+
+                        }
+                    </div>
+                </div>*@
+        </div>
+     
+    </div>
+    <br />
+
+    <div class="row">
+        <div   style="text-align:center">
+            <div class="contact-us-right">
+                <h2 class="title-sidebar">اطلاعات تماس</h2>
+                <ul style="text-align:center">
+                    <li ><span class="livicon" data-n="location" data-s="25"  data-hc="green"></span>  آدرس: @Model.Contacts.Address</li>
+                    <li><span class="livicon" data-n="mail" data-s="25" data-hc="green"></span> @Model.Contacts.Email :رایانامه</li>
+                    <li ><span class="livicon" data-n="phone" data-s="25" data-hc="green"></span> @Model.Contacts.PhoneOffice :شماره تماس شرکت</li>
+                    @if (Model.Contacts.PhoneSupport!=null)
+                    {
+                        <li  ><span class="livicon" data-n="truck" data-s="25" data-hc="green"></span> @Model.Contacts.PhoneSupport :پشتیبانی</li>
+
+                    }
+                    <li ><span class="livicon" data-n="notebook" data-s="25" data-hc="green"></span> @Model.Contacts.Fax :فکس</li>
+                    <li><span class="livicon" data-n="phone" data-s="25" data-hc="green"></span> @Model.Contacts.Mobile :موبایل</li>
+
+
+ 
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+ 
+<!--Modal For Contact Message-->
+@*<li> <a href=" javascript:void(0)" class=" btnDetails "><span class=" livicon" data-n="eye-open" data-s="40" data-c="#de5100" data-hc="#0051ff"></span></a></li>*@
+@*@section Scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".btnAjax").click(function () {
+                    //var id = $(this).data("value");
+                    $("#conteudoModal").load("/Products/ModalDetails/" + id,
+                        function () {
+                            $('#myModal').modal("show")
+                        }
+                    );
+                })
+
+            })
+        </script>
+    }*@
+<!-- Modal Dialog Box Start Here-->
+<!-- Modal Dialog Box End Here-->
